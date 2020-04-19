@@ -1,0 +1,39 @@
+﻿<Window
+    x:Class="WpfApp6.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WpfApp6"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800" Height="450"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <local:UsernameToEnabledConverter x:Key="UsernameToEnabledConverter" />
+    </Window.Resources>
+
+    <Grid>
+        <DataGrid
+            x:Name="DispJob"
+            Width="1000" Height="425"
+            Margin="-10,26,0,20" HorizontalAlignment="Left"
+            AutoGenerateColumns="False" CanUserResizeColumns="True"
+            CanUserSortColumns="True" IsReadOnly="True"
+            ItemsSource="{Binding}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=JobName}" Header="Job Name" />
+                <DataGridTextColumn Binding="{Binding Path=Username}" Header="Username" />
+                <DataGridTemplateColumn Header="Update">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate x:Name="Button_Update_Temp" DataType="local:CustomVm">
+                            <Button
+                                x:Name="btnUpdate"
+                                Click="btnUpdate_Click" Content="Update"
+                                IsEnabled="{Binding Username, Converter={StaticResource UsernameToEnabledConverter}}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

@@ -12,12 +12,15 @@
     <StackPanel>
         <TextBox Validation.Error="Validation_OnError">
             <TextBox.Text>
-                <Binding NotifyOnValidationError="True" Path="TestProp" UpdateSourceTrigger="PropertyChanged">
+                <Binding
+                    Mode="TwoWay" NotifyOnValidationError="True"
+                    Path="TestProp" ValidatesOnExceptions="True">
                     <Binding.ValidationRules>
                         <ExceptionValidationRule />
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
         </TextBox>
+        <TextBox />
     </StackPanel>
 </Window>

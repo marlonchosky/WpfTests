@@ -26,20 +26,23 @@ namespace WpfApp10 {
         }
 
         private void Validation_OnError(object sender, ValidationErrorEventArgs e) {
+            e.Handled = true;
+            throw new Exception("abc");
+            
             throw e.Error.Exception;
         }
     }
 
     public class TestViewModel {
         private string testProp;
-
         public string TestProp {
             get => testProp;
             set {
-                testProp = value;
-
-                // RAISE EXCEPTION IN PROPERTY SETTER
                 throw new Exception("Test Exception");
+
+                testProp = value;
+                
+                // RAISE EXCEPTION IN PROPERTY SETTER
             }
         }
     }

@@ -27,7 +27,8 @@
             Name="DataGrid1"
             AutoGenerateColumns="False"
             ItemsSource="{Binding}"
-            MouseLeftButtonUp="UIElement_OnMouseLeftButtonUp">
+            MouseLeftButtonUp="UIElement_OnMouseLeftButtonUp"
+            SelectionMode="Single" SelectionUnit="Cell">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Columna 1">
                     <DataGridTemplateColumn.CellTemplate>

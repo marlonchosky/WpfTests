@@ -32,7 +32,7 @@ namespace WpfApp15 {
         }
 
         private void CheckList_ItemSelectionChanged(object sender, Xceed.Wpf.Toolkit.Primitives.ItemSelectionChangedEventArgs e) {
-
+            MessageBox.Show($"e.IsSelected: {e.IsSelected}");
         }
     }
 

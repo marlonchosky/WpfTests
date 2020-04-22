@@ -1,0 +1,49 @@
+﻿<Window
+    x:Class="WpfApp13.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WpfApp13"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800" Height="450"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <DataTemplate x:Key="CellTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80" />
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0">
+                    <TextBlock Text="{Binding}" />
+                </Border>
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid>
+        <DataGrid
+            Name="DataGrid1"
+            AutoGenerateColumns="False"
+            ItemsSource="{Binding}"
+            MouseLeftButtonUp="UIElement_OnMouseLeftButtonUp">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Columna 1">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ContentPresenter Content="{Binding PetName}" ContentTemplate="{StaticResource CellTemplate}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Columna 1">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ContentPresenter Content="{Binding MaxVelocity}" ContentTemplate="{StaticResource CellTemplate}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

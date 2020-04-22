@@ -42,7 +42,6 @@ namespace WpfApp14 {
                     await Task.Delay(2000);
                 }
             });
-
         }
     }
 }

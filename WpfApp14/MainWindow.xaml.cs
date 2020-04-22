@@ -35,11 +35,14 @@ namespace WpfApp14 {
             this.FilesGridView.ItemsSource = _dt.DefaultView;
         }
 
-        private void Process_OnClick(object sender, RoutedEventArgs e) {
-            foreach (DataRowView row in this.FilesGridView.ItemsSource) {
-                row["Status"] = "Processing...";
-                System.Threading.Thread.Sleep(2000);    //letting 2 sec pass as a test
-            }
+        private async void Process_OnClick(object sender, RoutedEventArgs e) {
+            await Task.Run(async () => {
+                foreach (DataRowView row in this.FilesGridView.ItemsSource) {
+                    row["Status"] = "Processing...";
+                    await Task.Delay(2000);
+                }
+            });
+
         }
     }
 }

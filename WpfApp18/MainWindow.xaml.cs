@@ -27,7 +27,7 @@ namespace WpfApp18 {
     }
 
     public class SettingsViewModel : NotifyChangeClass {
-        private Color _fontColor = Colors.Blue;
+        private Color _fontColor = Colors.Lime;
 
         public Color TB3270FontColor {
             get { return _fontColor; }

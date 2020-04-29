@@ -1,0 +1,28 @@
+﻿<Window
+    x:Class="WpfApp19.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    xmlns:local="clr-namespace:WpfApp19"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800" Height="450"
+    mc:Ignorable="d">
+    <StackPanel>
+        <CheckBox x:Uid="Checkbox_1" FlowDirection="RightToLeft" IsChecked="{Binding TickCheckBox, Mode=TwoWay}">
+            My Checkbox
+        </CheckBox>
+
+        <dxe:TextEdit
+            x:Uid="dxe:TextEdit_1"
+            EditMode="{Binding EditMode}"
+            EditValue="{Binding RealValue, Mode=OneWay}"
+            ToolTipService.ShowDuration="20000" />
+        <dxe:TextEdit
+            x:Uid="dxe:TextEdit_2"
+            EditMode="Standalone"
+            EditValue="{Binding RealValue, Mode=OneWay}"
+            ToolTipService.ShowDuration="20000" />
+    </StackPanel>
+</Window>

@@ -1,19 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace WpfApp26 {
     /// <summary>
@@ -25,14 +13,19 @@ namespace WpfApp26 {
         public MainWindow() {
             InitializeComponent();
 
+            // Setting the Window's DataContext to a object of the ViewModel class.
             this.DataContext = this.vm = new ViewModel();
         }
 
         private void ModuleSelected_OnClick(object sender, RoutedEventArgs e) {
+            // The Source property of the RoutedEventArgs gets the Element that fires the event (in this case, the button).
             var clickedButton = (Button) e.Source;
             this.vm.CurretModuleName = clickedButton.Content.ToString();
 
+            // Getting the Tag property of the button.
             var tag = clickedButton.Tag.ToString();
+
+            // Performing the navigation.
             switch (tag) {
                 case "ToDoListModule":
                     NavigateToModule(new UcToDoListModule());
@@ -50,6 +43,8 @@ namespace WpfApp26 {
         }
     }
 
+    // The class implementents the INotifyPropertyChanged interface, that is used 
+    // by the WPF framework to update binding.
     public class ViewModel : INotifyPropertyChanged {
         private string curretModuleName;
         public string CurretModuleName {
@@ -59,7 +54,6 @@ namespace WpfApp26 {
                 this.OnPropertyChanged();
             }
         }
-
 
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;

@@ -14,7 +14,10 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
+
+        <!--  A GroupBox is a control with a header  -->
         <GroupBox Header="Options">
+            <!--  Look that the click event is handled in the StackPanel, the container for the buttons  -->
             <StackPanel Button.Click="ModuleSelected_OnClick">
                 <Button
                     Margin="5" Padding="5"
@@ -25,6 +28,7 @@
             </StackPanel>
         </GroupBox>
 
-        <GroupBox Grid.Column="1" Header="{Binding CurretModuleName}" Name="GbCurrentModule" />
+        <!--  The header property is binding to the CurrentModuleName property in the DataContext  -->
+        <GroupBox Name="GbCurrentModule" Grid.Column="1" Header="{Binding CurretModuleName}" />
     </Grid>
 </Window>
